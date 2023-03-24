@@ -25,7 +25,7 @@ public class PasswordManagerActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new PostFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new SecureFragment()).commit();
             selectedFragment = new SecureFragment();
         }
 
