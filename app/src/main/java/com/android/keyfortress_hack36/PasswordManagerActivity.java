@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -14,6 +15,8 @@ import java.util.Objects;
 
 public class PasswordManagerActivity extends AppCompatActivity {
 
+    Fragment selectedFragment = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,31 +24,43 @@ public class PasswordManagerActivity extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).hide();
 
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new PostFragment()).commit();
+            selectedFragment = new SecureFragment();
+        }
+
         BottomNavigationView navbar = findViewById(R.id.navbar);
 
-        navbar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = null;
+        navbar.setOnNavigationItemSelectedListener(navListener);
 
-                switch (item.getItemId()) {
-                    case R.id.secure_pwm:
-                        selectedFragment = new SecureFragment();
-
-                        break;
-
-                    case R.id.protect_frag:
-                        selectedFragment = new ProtectFragment();
-                        break;
-
-                    case R.id.learn_frag:
-                        selectedFragment = new LearnFragment();
-                        break;
-                }
-
-                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, selectedFragment).addToBackStack(null).commit();
-                return true;
-            }
-        });
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                    switch (item.getItemId()) {
+                        case R.id.secure_pwm:
+                            selectedFragment = new SecureFragment();
+                            break;
+
+                        case R.id.protect_frag:
+                            selectedFragment = new ProtectFragment();
+                            break;
+
+                        case R.id.learn_frag:
+                            selectedFragment = new LearnFragment();
+                            break;
+                    }
+
+                    getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, selectedFragment).commit();
+                    return true;
+                }
+            };
+
+
+    //========================================================================================
+    // Below code is related to phone authentication part
+
 }
