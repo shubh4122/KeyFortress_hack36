@@ -12,6 +12,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KeyFortress_hack36"
         tools:targetApi="31">
+
+
+
+        <activity
+            android:name=".SplashScreen"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".GoogleSignIn"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".PasswordManagerActivity"
             android:exported="true">
