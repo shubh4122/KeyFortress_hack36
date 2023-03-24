@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "1089741073383-q8lpllspjfvr1s7g2mig4v88d2rbtu6n.apps.googleusercontent.com",
+          "client_id": "1089741073383-2chkgl8seqamp9d9mf1figl55fc5sc9s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.keyfortress_hack36",
+            "certificate_hash": "274be6afd107c2546968e42a108fc90c1d80e782"
+          }
+        },
+        {
+          "client_id": "1089741073383-gdiib367v5pv5tioukifd843ghqtvtic.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1089741073383-q8lpllspjfvr1s7g2mig4v88d2rbtu6n.apps.googleusercontent.com",
+              "client_id": "1089741073383-gdiib367v5pv5tioukifd843ghqtvtic.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

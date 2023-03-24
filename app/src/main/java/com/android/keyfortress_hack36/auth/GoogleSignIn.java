@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.keyfortress_hack36.MainActivity;
+import com.android.keyfortress_hack36.PasswordManagerActivity;
 import com.android.keyfortress_hack36.R;
 import com.android.keyfortress_hack36.model.User;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -109,7 +109,7 @@ public class GoogleSignIn extends AppCompatActivity {
                         progressDialog.dismiss();
                         updateUserInfo();
 
-                        Intent intent = new Intent(GoogleSignIn.this, MainActivity.class);
+                        Intent intent = new Intent(GoogleSignIn.this, PasswordManagerActivity.class);
                         startActivity(intent);
                         finish();
                     }
