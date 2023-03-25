@@ -1,7 +1,5 @@
-package com.android.keyfortress_hack36;
+package com.android.keyfortress_hack36.adapter;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -21,8 +19,8 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.keyfortress_hack36.R;
 import com.android.keyfortress_hack36.model.Creds;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.concurrent.Executor;

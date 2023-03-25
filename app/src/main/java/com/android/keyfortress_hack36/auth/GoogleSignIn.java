@@ -10,7 +10,7 @@ import android.util.Patterns;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.android.keyfortress_hack36.PasswordManagerActivity;
+import com.android.keyfortress_hack36.activity.PasswordManagerActivity;
 import com.android.keyfortress_hack36.R;
 import com.android.keyfortress_hack36.model.User;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;

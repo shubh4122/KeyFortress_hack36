@@ -1,4 +1,4 @@
-package com.android.keyfortress_hack36;
+package com.android.keyfortress_hack36.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.android.keyfortress_hack36.auth.GoogleSignIn;
+import com.android.keyfortress_hack36.R;
 
 import java.util.Objects;
 

@@ -1,14 +1,16 @@
-package com.android.keyfortress_hack36;
+package com.android.keyfortress_hack36.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.android.keyfortress_hack36.database.Database;
+import com.android.keyfortress_hack36.PwdGenerator;
+import com.android.keyfortress_hack36.R;
 
 public class AddNewCred extends AppCompatActivity {
 

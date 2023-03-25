@@ -1,4 +1,4 @@
-package com.android.keyfortress_hack36;
+package com.android.keyfortress_hack36.fragment;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.VideoView;
+
+import com.android.keyfortress_hack36.R;
 
 public class LearnFragment extends Fragment {
 
@@ -37,7 +39,6 @@ public class LearnFragment extends Fragment {
 
         videoView2.setVideoURI(Uri.parse("android.resource://" + getContext().getPackageName() + "/" + R.raw.vid2));
         if(!videoView1.isPlaying()) videoView2.start();
-
 
         return view;
     }
