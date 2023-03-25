@@ -1,5 +1,7 @@
 package com.android.keyfortress_hack36;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -46,12 +48,27 @@ public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder
     public void onBindViewHolder(@NonNull CredViewHolder holder, int position) {
         Creds currentCred = credList.get(position);
 
-        Picasso.get().load(currentCred.getAppImg()).into(holder.appImg);
+        String appName = currentCred.getAppName();
+        appName = appName.toLowerCase();
+
+//        Picasso.get().load(currentCred.getAppImg()).into(holder.appImg);
+        if (appName.equals("instagram"))
+            holder.appImg.setBackgroundResource(R.drawable.instagram);
+
+        if (appName.equals("linkedin"))
+            holder.appImg.setBackgroundResource(R.drawable.linkedin);
+
+        if (appName.equals("twitter"))
+            holder.appImg.setBackgroundResource(R.drawable.twitter);
+
+        if (appName.equals("snapchat"))
+            holder.appImg.setBackgroundResource(R.drawable.snapchat);
+
+
+
         holder.username.setText(currentCred.getUsername());
 
 
-        String appName = currentCred.getAppName();
-        appName = appName.toLowerCase();
 //        String pkg = "com." + appName +".android";
 
 //        if (appName.equals("instagram"))
@@ -70,6 +87,27 @@ public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder
                 }
 
                 biometric(finalAppName);
+
+
+                //copy pw
+
+                StringBuilder copiedListTeams = new StringBuilder();
+                copiedListTeams.append("bDRRxqeHhuLXfCOT4D8Q");
+
+//        Toast.makeText(this, "Copied List:\n" + copiedListTeams, Toast.LENGTH_LONG).show();
+
+                /**
+                 * Below Lines are used to make the text copy to clipboard!!!
+                 * LEARN AND UNDERSTAND MORE ABOUT IT!!!
+                 */
+
+//
+//                private static final String COPY_Key = "copiedList";
+//                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+//                ClipData clip = ClipData.newPlainText(COPY_Key, copiedListTeams);
+//                clipboard.setPrimaryClip(clip);
+//
+//                Toast.makeText(context, "__Teams Copied__", Toast.LENGTH_SHORT).show();
             }
         });
     }

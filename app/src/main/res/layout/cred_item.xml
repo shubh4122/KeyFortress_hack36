@@ -22,7 +22,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/instagram"
+                tools:src="@drawable/instagram"
                 android:id="@+id/app_img"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
