@@ -32,53 +32,10 @@ public class SecureFragment extends Fragment {
     private CredAdapter credAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private Database db;
-    private BiometricPrompt biometricPrompt;
-    private BiometricPrompt.PromptInfo promptInfo;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        BiometricManager biometricManager = BiometricManager.from(requireActivity());
-        switch (biometricManager.canAuthenticate()) {
-            case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
-                Toast.makeText(requireActivity(), "No FingerPrint Sensor found!", Toast.LENGTH_SHORT).show();
-                break;
-
-            case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
-                Toast.makeText(requireActivity(), "Not working!", Toast.LENGTH_SHORT).show();
-                break;
-
-            case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
-                Toast.makeText(requireActivity(), "No FingerPrint Assigned!", Toast.LENGTH_SHORT).show();
-                break;
-
-
-        }
-
-        Executor executor = ContextCompat.getMainExecutor(requireActivity());
-
-        biometricPrompt = new BiometricPrompt(requireActivity(), executor, new BiometricPrompt.AuthenticationCallback() {
-            @Override
-            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
-                super.onAuthenticationError(errorCode, errString);
-            }
-
-            @Override
-            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
-                super.onAuthenticationSucceeded(result);
-                Toast.makeText(requireActivity(), "Put Intent to the given app", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAuthenticationFailed() {
-                super.onAuthenticationFailed();
-            }
-        });
-
-        promptInfo = new BiometricPrompt.PromptInfo.Builder().setTitle("KeyFortress")
-                .setDescription("Verify your fingerprint to continue logging in to selected app")
-                .setDeviceCredentialAllowed(true).build();
 
         credList = new ArrayList<Creds>();
 
@@ -110,4 +67,5 @@ public class SecureFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(credAdapter);
     }
+
 }

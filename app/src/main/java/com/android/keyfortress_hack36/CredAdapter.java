@@ -6,14 +6,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.keyfortress_hack36.model.Creds;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.concurrent.Executor;
 
 public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder> {
 
@@ -37,6 +44,61 @@ public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder
         Creds currentCred = credList.get(position);
         Picasso.get().load(currentCred.getAppImg()).into(holder.appImg);
         holder.username.setText(currentCred.getUsername());
+
+
+//        Toast.makeText(context, "biometric...", Toast.LENGTH_SHORT).show();
+        BiometricPrompt biometricPrompt;
+        BiometricPrompt.PromptInfo promptInfo;
+
+        BiometricManager biometricManager = BiometricManager.from(context);
+        switch (biometricManager.canAuthenticate()) {
+            case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
+                Toast.makeText(context, "No FingerPrint Sensor found!", Toast.LENGTH_SHORT).show();
+                break;
+                
+
+            case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
+                Toast.makeText(context, "Not working!", Toast.LENGTH_SHORT).show();
+                break;
+
+            case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
+                Toast.makeText(context, "No FingerPrint Assigned!", Toast.LENGTH_SHORT).show();
+                break;
+
+
+        }
+
+        Executor executor = ContextCompat.getMainExecutor(context);
+
+        biometricPrompt = new BiometricPrompt((FragmentActivity) context, executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                Toast.makeText(context, "Redirecting... Password Copied. use it within 1 minute", Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+            }
+        });
+
+        promptInfo = new BiometricPrompt.PromptInfo.Builder().setTitle("KeyFortress")
+                .setDescription("Verify your fingerprint to continue logging in to selected app")
+                .setDeviceCredentialAllowed(true).build();
+
+        holder.credcard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                biometricPrompt.authenticate(promptInfo);
+            }
+        });
     }
 
     @Override
@@ -48,12 +110,14 @@ public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder
 
         ImageView appImg;
         TextView username;
+        CardView credcard;
 
         public CredViewHolder(@NonNull View itemView) {
             super(itemView);
 
             appImg = itemView.findViewById(R.id.app_img);
             username = itemView.findViewById(R.id.username);
+            credcard = itemView.findViewById(R.id.credcard);
         }
     }
 
