@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Arrays;
+
 public class AddNewCred extends AppCompatActivity {
 
     EditText appName, userId;
@@ -31,10 +33,19 @@ public class AddNewCred extends AppCompatActivity {
             String user_id = userId.getText().toString();
             String pw = PwdGenerator.generatePassword(20);
 
+            AES_Encryption encrypt;
+            String encryptedPW = null;
+            try {
+                encrypt = new AES_Encryption();
+                encryptedPW = Arrays.toString(encrypt.performEncryption(pw));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
 //            Toast.makeText(this, app_name + user_id, Toast.LENGTH_SHORT).show();
             if(!TextUtils.isEmpty(app_name) && !TextUtils.isEmpty(user_id)){
                 Database db = new Database();
-                db.addCreds(app_name, user_id, pw);
+                db.addCreds(app_name, user_id, encryptedPW);
             }
             else{
                 Toast.makeText(this, "please enter the info", Toast.LENGTH_SHORT).show();
