@@ -1,5 +1,6 @@
 package com.android.keyfortress_hack36;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
 import com.android.keyfortress_hack36.model.Creds;
@@ -27,6 +29,7 @@ public class SecureFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private Database db;
     private ProgressBar postLoaderBar;
+    private ImageButton addNewCred;
 
     @Nullable
     @Override
@@ -44,6 +47,14 @@ public class SecureFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_secure, container, false);
         setUpRecyclerView(view);
         db.readCreds(credList, credAdapter);
+
+        addNewCred = view.findViewById(R.id.btnAddNewCred);
+        // Redirects to other activity where new cred can be added.
+        addNewCred.setOnClickListener(v -> {
+            Intent intent = new Intent(this.getActivity(), AddNewCred.class);
+            startActivity(intent);
+        });
+
         return view;
     }
 
