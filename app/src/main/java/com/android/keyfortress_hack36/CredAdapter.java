@@ -1,6 +1,9 @@
 package com.android.keyfortress_hack36;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,8 +48,31 @@ public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder
         Picasso.get().load(currentCred.getAppImg()).into(holder.appImg);
         holder.username.setText(currentCred.getUsername());
 
+        String appName = currentCred.getAppName();
+        appName = appName.toLowerCase();
+//        String pkg = "com." + appName +".android";
+
+//        if (appName.equals("instagram"))
+//            pkg = "com.instagram.android";
 
 //        Toast.makeText(context, "biometric...", Toast.LENGTH_SHORT).show();
+
+        String finalAppName = appName;
+        holder.credcard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(context, finalAppName, Toast.LENGTH_SHORT).show();
+
+                for (int i = 0; i < credList.size(); i++) {
+                    Log.i("appname", "onClick: " + credList.get(i).getAppName());
+                }
+
+                biometric(finalAppName);
+            }
+        });
+    }
+
+    public void biometric(String finalAppName) {
         BiometricPrompt biometricPrompt;
         BiometricPrompt.PromptInfo promptInfo;
 
@@ -55,7 +81,7 @@ public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder
             case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
                 Toast.makeText(context, "No FingerPrint Sensor found!", Toast.LENGTH_SHORT).show();
                 break;
-                
+
 
             case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
                 Toast.makeText(context, "Not working!", Toast.LENGTH_SHORT).show();
@@ -79,8 +105,15 @@ public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder
             @Override
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-                Toast.makeText(context, "Redirecting... Password Copied. use it within 1 minute", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "Redirecting... Password Copied. use it within 1 minute", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, finalAppName, Toast.LENGTH_SHORT).show();
 
+                String pkg = "com."+finalAppName+".android";
+                PackageManager pm = context.getPackageManager();
+                Intent i = pm.getLaunchIntentForPackage(pkg);
+
+                if (i != null)
+                    context.startActivity(i);
             }
 
             @Override
@@ -93,12 +126,9 @@ public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder
                 .setDescription("Verify your fingerprint to continue logging in to selected app")
                 .setDeviceCredentialAllowed(true).build();
 
-        holder.credcard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                biometricPrompt.authenticate(promptInfo);
-            }
-        });
+
+
+        biometricPrompt.authenticate(promptInfo);
     }
 
     @Override
@@ -118,6 +148,7 @@ public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder
             appImg = itemView.findViewById(R.id.app_img);
             username = itemView.findViewById(R.id.username);
             credcard = itemView.findViewById(R.id.credcard);
+
         }
     }
 
