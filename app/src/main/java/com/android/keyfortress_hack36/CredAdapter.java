@@ -2,6 +2,7 @@ package com.android.keyfortress_hack36;
 
 import static androidx.core.content.ContextCompat.getSystemService;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -28,6 +29,7 @@ import com.android.keyfortress_hack36.model.Creds;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.Executor;
 
 public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder> {
@@ -81,6 +83,7 @@ public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder
 
         String finalAppName = appName;
         holder.credcard.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("LongLogTag")
             @Override
             public void onClick(View v) {
 //                Toast.makeText(context, finalAppName, Toast.LENGTH_SHORT).show();
@@ -94,23 +97,27 @@ public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder
 
                 //copy pw
 
-                StringBuilder copiedKey = new StringBuilder();
-                copiedKey.append(currentCred.getPassword());
+                AES_Encryption d;
+                StringBuilder temp = new StringBuilder();
+                String decryptedPw = null;
 
-//        Toast.makeText(this, "Copied List:\n" + copiedListTeams, Toast.LENGTH_LONG).show();
+                try {
+                    d = new AES_Encryption();
 
-                /**
-                 * Below Lines are used to make the text copy to clipboard!!!
-                 * LEARN AND UNDERSTAND MORE ABOUT IT!!!
-                 */
+                    decryptedPw = d.decrypt(currentCred.getPassword());
+                    Log.i("-------------------------DE---------------------", "onClick: "+ decryptedPw);
+                    Toast.makeText(context, decryptedPw, Toast.LENGTH_SHORT).show();
+//                    copiedKey.append();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-//
                 String COPY_Key = "copiedList";
                 ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText(COPY_Key, copiedKey);
+                ClipData clip = ClipData.newPlainText(COPY_Key, decryptedPw);
                 clipboard.setPrimaryClip(clip);
 
-                Toast.makeText(context, copiedKey, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, copiedKey, Toast.LENGTH_SHORT).show();
 
                 new Handler().postDelayed(new Runnable() {
                     @Override

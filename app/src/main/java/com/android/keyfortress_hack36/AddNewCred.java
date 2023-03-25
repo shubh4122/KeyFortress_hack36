@@ -33,13 +33,13 @@ public class AddNewCred extends AppCompatActivity {
             String user_id = userId.getText().toString();
             String pw = PwdGenerator.generatePassword(20);
 
-            AES_Encryption encrypt;
+            AES_Encryption e;
             String encryptedPW = null;
             try {
-                encrypt = new AES_Encryption();
-                encryptedPW = Arrays.toString(encrypt.performEncryption(pw));
-            } catch (Exception e) {
-                e.printStackTrace();
+                e = new AES_Encryption();
+                encryptedPW = e.encrypt(pw);
+            } catch (Exception ee) {
+                ee.printStackTrace();
             }
 
 //            Toast.makeText(this, app_name + user_id, Toast.LENGTH_SHORT).show();
