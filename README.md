@@ -6,8 +6,7 @@
 
 
 ## Introduction:
-    With the increasing use of technology, cybercrime has become a growing concern for individuals, businesses, and governments worldwide. 
-As technology evolves, so do the tactics of cybercriminals, making it challenging to prevent and detect such crimes. It is crucial to find effective countermeasures to combat cybercrime to protect personal and sensitive information, prevent financial losses, and ensure cybersecurity. As responsible citizens, we must utilize our resources wisely to mitigate the risks and challenges posed by cybercrime.
+With the increasing use of technology, cybercrime has become a growing concern for individuals, businesses, and governments worldwide.As technology evolves, so do the tactics of cybercriminals, making it challenging to prevent and detect such crimes. It is crucial to find effective countermeasures to combat cybercrime to protect personal and sensitive information, prevent financial losses, and ensure cybersecurity. As responsible citizens, we must utilize our resources wisely to mitigate the risks and challenges posed by cybercrime.
 
 To Solve this problem we have added on extra layer of security i.e. Biometric Layer
   
