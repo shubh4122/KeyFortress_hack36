@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddNewCred extends AppCompatActivity {
 
@@ -22,14 +24,21 @@ public class AddNewCred extends AppCompatActivity {
         userId = findViewById(R.id.etUserId);
         btnSaveCred = findViewById(R.id.btnSaveCred);
 
-        String app_name = appName.getText().toString();
-        String user_id = userId.getText().toString();
-
         //TODO: To generate Password through Algorithms
 
         btnSaveCred.setOnClickListener(view -> {
-            Database db = new Database();
-            db.addCreds(app_name, user_id, "dsfjh2321434bgfdfdgbf");
+            String app_name = appName.getText().toString();
+            String user_id = userId.getText().toString();
+//            Toast.makeText(this, app_name + user_id, Toast.LENGTH_SHORT).show();
+            if(!TextUtils.isEmpty(app_name) && !TextUtils.isEmpty(user_id)){
+                Database db = new Database();
+                db.addCreds(app_name, user_id, "dsfjh2321434bgfdfdgbf");
+            }
+            else{
+                Toast.makeText(this, "please enter the info", Toast.LENGTH_SHORT).show();
+            }
+
+            finish();
         });
     }
 }

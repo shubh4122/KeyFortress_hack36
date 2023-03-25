@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:fontFamily="monospace"
-        android:text="Add  New Credential"
+        android:text="Add New Credential"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
