@@ -1,5 +1,6 @@
 package com.android.keyfortress_hack36.fragment;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -35,29 +36,40 @@ public class LearnFragment extends Fragment {
         cdDDoSAttack = view.findViewById(R.id.cardView3);
         cdBnkFraud = view.findViewById(R.id.cardView4);
 
+
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String url = null;
+
                 switch (v.getId()) {
                     case R.id.cardView1:
-                        Toast.makeText(getActivity(), "Phishing", Toast.LENGTH_SHORT).show();
+                        url = "https://en.wikipedia.org/wiki/Phishing";
+//                        Toast.makeText(getActivity(), "Phishing", Toast.LENGTH_SHORT).show();
                         break;
 
 
                     case R.id.cardView2:
-                        Toast.makeText(getActivity(), "MalAttack", Toast.LENGTH_SHORT).show();
+                        url = "https://en.wikipedia.org/wiki/Malware";
+//                        Toast.makeText(getActivity(), "MalAttack", Toast.LENGTH_SHORT).show();
                         break;
 
 
                     case R.id.cardView3:
-                        Toast.makeText(getActivity(), "DDos", Toast.LENGTH_SHORT).show();
+                        url = "https://en.wikipedia.org/wiki/Denial-of-service_attack";
+//                        Toast.makeText(getActivity(), "DDos", Toast.LENGTH_SHORT).show();
                         break;
 
 
                     case R.id.cardView4:
-                        Toast.makeText(getActivity(), "Bank fraud", Toast.LENGTH_SHORT).show();
+                        url = "https://en.wikipedia.org/wiki/Bank_fraud";
+//                        Toast.makeText(getActivity(), "Bank fraud", Toast.LENGTH_SHORT).show();
                         break;
                 }
+
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
             }
         };
 
