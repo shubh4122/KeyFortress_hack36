@@ -7,12 +7,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
-import androidx.core.content.ContextCompat;
+
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,30 +43,13 @@ public class SecureFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        credList = new ArrayList<Creds>();
-
-        //dummy data
-//        credList.add(new Creds("https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-instagram-new-square2-512.png", "Instagram", "__sp04", "hello"));
-//        credList.add(new Creds("https://www.freeiconspng.com/thumbs/logo-twitter-png/logo-twitter-icon-symbol-0.png", "Twitter", "__sp04", "hello"));
-//        credList.add(new Creds("https://cdn-icons-png.flaticon.com/512/174/174857.png", "LinkedIn", "__sp04", "hello"));
-//        credList.add(new Creds("https://seeklogo.com/images/S/snapchat-logo-F20CDB1199-seeklogo.com.png", "Snapchat", "__sp04", "hello"));
-//
-//
-//        credList.add(new Creds("https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-instagram-new-square2-512.png", "Instagram", "__sp04", "hello"));
-//        credList.add(new Creds("https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-instagram-new-square2-512.png", "Instagram", "__sp04", "hello"));
-//        credList.add(new Creds("https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-instagram-new-square2-512.png", "Instagram", "__sp04", "hello"));
-//        credList.add(new Creds("https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-instagram-new-square2-512.png", "Instagram", "__sp04", "hello"));
-//        credList.add(new Creds("https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-instagram-new-square2-512.png", "Instagram", "__sp04", "hello"));
-//        credList.add(new Creds("https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-instagram-new-square2-512.png", "Instagram", "__sp04", "hello"));
-//        credList.add(new Creds("https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-instagram-new-square2-512.png", "Instagram", "__sp04", "hello"));
-//        credList.add(new Creds("https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-instagram-new-square2-512.png", "Instagram", "__sp04", "hello"));
+        credList = new ArrayList<>();
+        db = new Database();
 
         View view = inflater.inflate(R.layout.fragment_secure, container, false);
         setUpRecyclerView(view);
 
-
         db.readCreds(credList, credAdapter); //use when connected to DB
-
 
         addNewCred = view.findViewById(R.id.btnAddNewCred);
         // Redirects to other activity where new cred can be added.
