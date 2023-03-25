@@ -1,6 +1,5 @@
 package com.android.keyfortress_hack36.auth;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,9 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.keyfortress_hack36.PasswordManagerActivity;
@@ -20,10 +17,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
@@ -130,12 +125,14 @@ public class GoogleSignIn extends AppCompatActivity {
             mRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserId);
 
             GoogleSignInAccount account = com.google.android.gms.auth.api.signin.GoogleSignIn.getLastSignedInAccount(this);
-            if(account!=null){
+            if(account != null){
                 name = account.getGivenName();
                 email = account.getEmail();
                 User user = new User(name, email);
                 mRef.setValue(user);
+//                mRef.child("Credentials").setValue("");
             }
+
         }
     }
 

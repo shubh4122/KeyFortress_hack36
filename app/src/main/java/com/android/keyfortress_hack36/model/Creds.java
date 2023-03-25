@@ -3,6 +3,8 @@ package com.android.keyfortress_hack36.model;
 public class Creds {
     String appImg, username, password, appName;
 
+    public Creds(){}
+
     public Creds(String appName, String username, String password) {
         this.appName = appName;
         this.username = username;
