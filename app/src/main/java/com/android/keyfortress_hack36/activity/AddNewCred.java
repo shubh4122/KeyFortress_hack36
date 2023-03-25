@@ -6,21 +6,26 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.keyfortress_hack36.database.Database;
 import com.android.keyfortress_hack36.PwdGenerator;
 import com.android.keyfortress_hack36.R;
 
+import java.util.Objects;
+
 public class AddNewCred extends AppCompatActivity {
 
     EditText appName, userId;
-    Button btnSaveCred;
+    TextView btnSaveCred;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_cred);
+
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         appName = findViewById(R.id.etAppName);
         userId = findViewById(R.id.etUserId);
