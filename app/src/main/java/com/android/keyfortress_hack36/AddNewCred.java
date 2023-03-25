@@ -29,10 +29,12 @@ public class AddNewCred extends AppCompatActivity {
         btnSaveCred.setOnClickListener(view -> {
             String app_name = appName.getText().toString();
             String user_id = userId.getText().toString();
+            String pw = PwdGenerator.generatePassword(20);
+
 //            Toast.makeText(this, app_name + user_id, Toast.LENGTH_SHORT).show();
             if(!TextUtils.isEmpty(app_name) && !TextUtils.isEmpty(user_id)){
                 Database db = new Database();
-                db.addCreds(app_name, user_id, "dsfjh2321434bgfdfdgbf");
+                db.addCreds(app_name, user_id, pw);
             }
             else{
                 Toast.makeText(this, "please enter the info", Toast.LENGTH_SHORT).show();

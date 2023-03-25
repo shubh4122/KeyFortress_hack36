@@ -45,8 +45,10 @@ public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder
     @Override
     public void onBindViewHolder(@NonNull CredViewHolder holder, int position) {
         Creds currentCred = credList.get(position);
+
         Picasso.get().load(currentCred.getAppImg()).into(holder.appImg);
         holder.username.setText(currentCred.getUsername());
+
 
         String appName = currentCred.getAppName();
         appName = appName.toLowerCase();
