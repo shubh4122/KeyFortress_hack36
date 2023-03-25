@@ -1,6 +1,6 @@
 package com.android.keyfortress_hack36.model;
 
-public class User {
+public class    User {
     private final String name, email;
 
     public User(String name, String email){

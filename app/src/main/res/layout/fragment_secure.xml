@@ -74,6 +74,7 @@
             app:layout_constraintTop_toBottomOf="@id/credHeading"
             android:layout_margin="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
+            tools:listitem="@layout/cred_item"
             app:layout_constraintRight_toRightOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
