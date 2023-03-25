@@ -1,10 +1,13 @@
 package com.android.keyfortress_hack36;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,8 +94,8 @@ public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder
 
                 //copy pw
 
-                StringBuilder copiedListTeams = new StringBuilder();
-                copiedListTeams.append("bDRRxqeHhuLXfCOT4D8Q");
+                StringBuilder copiedKey = new StringBuilder();
+                copiedKey.append(currentCred.getPassword());
 
 //        Toast.makeText(this, "Copied List:\n" + copiedListTeams, Toast.LENGTH_LONG).show();
 
@@ -102,14 +105,32 @@ public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder
                  */
 
 //
-//                private static final String COPY_Key = "copiedList";
-//                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-//                ClipData clip = ClipData.newPlainText(COPY_Key, copiedListTeams);
-//                clipboard.setPrimaryClip(clip);
-//
-//                Toast.makeText(context, "__Teams Copied__", Toast.LENGTH_SHORT).show();
+                String COPY_Key = "copiedList";
+                ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText(COPY_Key, copiedKey);
+                clipboard.setPrimaryClip(clip);
+
+                Toast.makeText(context, copiedKey, Toast.LENGTH_SHORT).show();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        clearClipboard();
+                    }
+                }, 30000);
             }
         });
+    }
+
+    private void clearClipboard() {
+        String COPY_Key = "copiedList";
+        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard != null) {
+            clipboard.setPrimaryClip(ClipData.newPlainText("", ""));
+        }
+
+        Toast.makeText(context, "removed from clipboard", Toast.LENGTH_SHORT).show();
+
     }
 
     public void biometric(String finalAppName) {

@@ -49,8 +49,12 @@ public class SecureFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_secure, container, false);
         setUpRecyclerView(view);
 
-        db.readCreds(credList, credAdapter); //use when connected to DB
-
+        try {
+            db.readCreds(credList, credAdapter); //use when connected to DB
+        }
+        catch (Exception e) {
+//            Toast.makeText(requireActivity(), "FUCKEEDDD", Toast.LENGTH_SHORT).show();
+        }
         addNewCred = view.findViewById(R.id.btnAddNewCred);
         // Redirects to other activity where new cred can be added.
         addNewCred.setOnClickListener(v -> {
