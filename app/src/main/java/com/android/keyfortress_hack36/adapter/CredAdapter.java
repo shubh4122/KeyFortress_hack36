@@ -105,7 +105,7 @@ public class CredAdapter extends RecyclerView.Adapter<CredAdapter.CredViewHolder
 
                     decryptedPw = d.decrypt(currentCred.getPassword());
                     Log.i("-------------------------DE---------------------", "onClick: "+ decryptedPw);
-                    Toast.makeText(context, decryptedPw, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, decryptedPw, Toast.LENGTH_SHORT).show();
 //                    copiedKey.append();
                 } catch (Exception e) {
                     e.printStackTrace();
