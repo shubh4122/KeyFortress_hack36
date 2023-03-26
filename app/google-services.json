@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1089741073383",
+    "project_id": "keyfortress-hack36",
+    "storage_bucket": "keyfortress-hack36.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089741073383:android:36c96bb881768120caab42",
+        "android_client_info": {
+          "package_name": "com.android.keyfortress_hack36"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1089741073383-2chkgl8seqamp9d9mf1figl55fc5sc9s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.keyfortress_hack36",
+            "certificate_hash": "274be6afd107c2546968e42a108fc90c1d80e782"
+          }
+        },
+        {
+          "client_id": "1089741073383-gdiib367v5pv5tioukifd843ghqtvtic.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYQtRGVR-44q-yPtaU85tMSlpfPWzPRYg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1089741073383-gdiib367v5pv5tioukifd843ghqtvtic.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

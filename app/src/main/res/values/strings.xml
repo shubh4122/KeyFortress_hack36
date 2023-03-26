@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">KeyFortress_hack36</string>
+    <string name="app_name">KeyFortress</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name_in_color"><font color="#7F00FD">K</font>ey<font color="#7F00FD">F</font>ortress</string>
+    <string name="password_info"><font color="#FF0404">Note</font> :- Password will be generated automatically</string>
+
 </resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/secure_pwm"
+        android:icon="@drawable/ic_securelock"
+        android:title="Secure" />
+
+    <item
+        android:id="@+id/protect_frag"
+        android:icon="@drawable/ic_phishing_security"
+        android:title="Protect" />
+
+    <item
+        android:id="@+id/learn_frag"
+        android:icon="@drawable/ic_learn"
+        android:title="Learn" />
+
+</menu>
