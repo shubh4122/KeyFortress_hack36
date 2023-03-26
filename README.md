@@ -28,9 +28,9 @@ To Solve this problem we have added on extra layer of security i.e. Biometric La
 
 Team Name: Team Wora
 
-* [Shivansh KUmar](https://github.com/codeXstalker)
+* [Shivansh Kumar](https://github.com/codeXstalker)
 * [Shubham Pandey](https://github.com/shubh4122)
-* [Abhisekh MIshra](https://github.com/mishra-abhii)
+* [Abhishek Mishra](https://github.com/mishra-abhii)
 
 
 ### Made at:
