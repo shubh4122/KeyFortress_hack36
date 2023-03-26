@@ -21,7 +21,6 @@ To Solve this problem we have added on extra layer of security i.e. Biometric La
   1) Android SDK
   2) JAVA (Backend)
   3) XML (Frontend)
-  4) Machine Learning
   4) Firebase (Database)
   
 
