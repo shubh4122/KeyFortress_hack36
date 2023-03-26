@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.keyfortress_hack36.activity.PasswordManagerActivity;
@@ -35,7 +36,7 @@ public class GoogleSignIn extends AppCompatActivity {
     DatabaseReference mRef;
     String name, email;
 
-    Button btnSignIn;
+    TextView btnSignIn;
     ProgressDialog progressDialog;
 
     @Override
