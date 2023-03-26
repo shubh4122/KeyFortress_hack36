@@ -31,7 +31,7 @@ Team Name: Team Wora
 
 * [Shivansh KUmar](https://github.com/codeXstalker)
 * [Shubham Pandey](https://github.com/shubh4122)
-* [Abhisekh MIshra](https://github.com/developer-ishan)
+* [Abhisekh MIshra](https://github.com/mishra-abhii)
 
 
 ### Made at:
