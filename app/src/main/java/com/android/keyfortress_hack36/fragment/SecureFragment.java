@@ -43,7 +43,7 @@ public class SecureFragment extends Fragment {
         try {
             db.readCreds(credList, credAdapter); //use when connected to DB
         }catch (Exception e){
-            Toast.makeText(requireContext(), e.toString(), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(requireContext(), e.toString(), Toast.LENGTH_SHORT).show();
         }
 
         addNewCred = view.findViewById(R.id.btnAddNewCred);
